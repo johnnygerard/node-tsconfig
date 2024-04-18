@@ -1,0 +1,67 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "start:watch",
+			"isBackground": true,
+			"dependsOn": [
+				"npm: build:watch"
+			],
+			"dependsOrder": "sequence",
+			"problemMatcher": {
+				"owner": "typescript",
+				"pattern": "$tsc",
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": {
+						"regexp": "^> node"
+					},
+					"endsPattern": {
+						"regexp": "^Completed running"
+					}
+				}
+			},
+			"label": "npm: start:watch",
+			"detail": "node --watch ."
+		},
+		{
+			"type": "npm",
+			"script": "start",
+			"dependsOn": [
+				"npm: build"
+			],
+			"dependsOrder": "sequence",
+			"problemMatcher": {
+				"owner": "typescript",
+				"pattern": "$tsc",
+			},
+			"label": "npm: start",
+			"detail": "node ."
+		},
+		{
+			"type": "npm",
+			"script": "build:watch",
+			"isBackground": true,
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [
+				"$tsc-watch"
+			],
+			"label": "npm: build:watch",
+			"detail": "tsc --watch"
+		},
+		{
+			"type": "npm",
+			"script": "build",
+			"group": "build",
+			"problemMatcher": [
+				"$tsc"
+			],
+			"label": "npm: build",
+			"detail": "tsc"
+		}
+	]
+}
