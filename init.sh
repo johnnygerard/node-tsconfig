@@ -5,6 +5,12 @@ npm init -y
 npm pkg set type=module
 npm pkg set main=dist/index.js
 
+# Add scripts to package.json
+npm pkg set scripts.build='tsc'
+npm pkg set scripts.build:watch='tsc --watch'
+npm pkg set scripts.start='node .'
+npm pkg set scripts.start:watch='node --watch .'
+
 # Install TypeScript dependencies for Node.js
 # Allowed major versions: 10, 12, 14, 16, 17, 18, 19, 20, 21
 # See full list at https://github.com/tsconfig/bases?tab=readme-ov-file#table-of-tsconfigs
